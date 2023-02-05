@@ -27,7 +27,7 @@ output: pdf_document
 ```
 
 
-```{r}
+```{r, include=FALSE}
 library(tseries)
 library(Matrix)
 library(corrplot)
@@ -157,12 +157,12 @@ result  #visualisation des resultat du test
 - Autocorrelation des series de returns (analyse faite en amont)
 
 ```{r fig.height=10, fig.width=10}
-for (i in 3:ncol(Returns)){
-acf_result <- acf(Returns[,i])
+#for (i in 3:ncol(Returns)){
+#acf_result <- acf(Returns[,i])
 
 # Plot autocorrelation function
-plot(acf_result)
-}
+#plot(acf_result)
+#}
 
 ```
 
@@ -187,7 +187,7 @@ stat_descriptive
 
 ```
 
-```{r fig.height=5, fig.width=7}
+```{r fig.height=5, fig.width=7, out.width="20%"}
 #______________  Graphiques individuelle par equity (Histogram) ______________
 
 range = 3:58

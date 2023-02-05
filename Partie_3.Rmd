@@ -1,7 +1,12 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 
 
 ## Librairies
-```{r}
+```{r, include=FALSE}
 
 library(readxl)
 library(ggplot2)
@@ -17,7 +22,7 @@ library(PortfolioAnalytics)
 -------------------------------------------------------------------------------------------------------
 
 ## Import de la base de données Returns
-```{r}
+```{r, include=FALSE}
  
 Returns <- read.csv("data/Returns_partie3.csv", sep = ",", header = T)
 
@@ -34,7 +39,7 @@ Returns[c('S5ENRS')] <- list(NULL)
 
 
 ## Formatage de la date 
-```{r}
+```{r, include=FALSE}
 Returns$Date <- as.Date(Returns$Date, format="%Y-%m-%d")
 
 ```
@@ -43,7 +48,7 @@ Returns$Date <- as.Date(Returns$Date, format="%Y-%m-%d")
 
 
 ### Question 7) Représenter l'ensemble des actions sur un même plan rendement volatilité?..
-```{r}
+```{r, include=FALSE}
 
 fontir_effi_return <- as.timeSeries(Returns)
 pspec <- portfolioSpec()
@@ -59,7 +64,7 @@ plot(front_eff, c(1, 4), main="Frontière d'efficacité du portefeuille", xlab="
 
 
 ## Graphique : representation des actifs sur un plan rendement / volatilité avec le nom des stocks
-```{r fig.height=5, fig.width=10}
+```{r, include=FALSE, fig.height=5, fig.width=10}
 port <- portfolio.spec(assets = c(colnames(fontir_effi_return)))
 port <- add.constraint(portfolio = port, type = "long_only")
 
@@ -80,38 +85,38 @@ chart.RiskReward(rand_p, risk.col = "StdDev", return.col = "mean", chart.assets 
 
 # l'ensemble des portefeuilles qu'on peut constituer sur un plan rendement risque avec ces actions sur un même plan rendement volatilit?.
 
-```{r}
+```{r, include=FALSE}
 eff_front <- portfolioFrontier(fontir_effi_return, constraints = "LongOnly")
-plot(eff_front, c(1, 2, 3, 4,5,6))
+plot(eff_front, c(1, 2, 3, 4,5, 6))
 ```
 
 
-```{r}
+```{r, include=FALSE}
 eff_front <- portfolioFrontier(fontir_effi_return, constraints = "LongOnly")
 plot(eff_front, c(1, 2, 3, 4, 5,6,7))
 ```
 
 
-```{r}
+```{r, include=FALSE}
 tailoredFrontierPlot(eff_front, sharpeRatio = FALSE, risk = "Sigma")
 ```
 
 
-```{r}
+```{r, include=FALSE}
 weightsPlot(eff_front)
 ```
 
 # Question 9 ) Calculer et représenter le portefeuille ? variance min Pour le portefeuille ? variance min : donner le résumé des statistiques (compositions, risques, rendements.)
 
 ## Graphique : repr?sentation du portefeuille ? variance minimale
-```{r}
+```{r, include=FALSE}
 eff_front <- portfolioFrontier(fontir_effi_return, constraints = "LongOnly")
 plot(eff_front, c(1, 2))
 ```
 
 
 ## Details du portefeuille ? variance minimale
-```{r}
+```{r, include=FALSE}
 minvar_ptf <- minvariancePortfolio(fontir_effi_return,  spec = portfolioSpec())
 summary(minvar_ptf)
 ```
@@ -121,28 +126,28 @@ summary(minvar_ptf)
 
 # Question 10) Calculer Sharpe, rentabilit? et volatilit? du portefeuille ?quipond?rant et constitu? par toutes les actions. 
 
-```{r}
+```{r, include=FALSE}
 eff_front = portfolioFrontier(fontir_effi_return, constraints = "LongOnly")
 plot(eff_front, c(1, 5)) # portefeuille équipondéré
 ```
 
 
 ## Pr?paration des donn?es
-```{r}
+```{r, include=FALSE}
 stock_return <- xts(x = subset(Returns, select = -c(Date)), order.by = as.Date(Returns$Date))
 stock_return <- na.omit(stock_return)
 ```
 
 
 ## Details du Portefeuille équipondéré
-```{r}
+```{r, include=FALSE}
 w = 1/57
 stock_weight = c(w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w)
 ewp_ptf = Return.portfolio(stock_return, weights = stock_weight)
 ```
 
 
-```{r}
+```{r, include=FALSE}
 stat_desc <- function(return, rf){
   stats <- Return.cumulative(return)
   stats <- rbind(stats, StdDev(return))
