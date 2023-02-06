@@ -397,4 +397,13 @@ else:
             sns.countplot(x=selected_stock_data['CNTRY_OF_DOMICILE'])
             st.pyplot(plt)
 
+<<<<<<< HEAD
     st.image('https://github.com/aanisoara/Projet_Finance/raw/main/Image/thanks.gif',width=300, use_column_width ='false')
+=======
+    st.image('https://github.com/aanisoara/Projet_Finance/raw/main/Image/thanks.gif',width=300, use_column_width ='false')
+
+
+
+    
+    
+>>>>>>> 8750d70b7bcf8476dc1184b6f6a722d7638cff67
