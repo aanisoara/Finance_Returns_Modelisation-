@@ -23,11 +23,11 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-plt.rcParams['lines.linewidth'] = 2
-matplotlib.rcParams['axes.labelsize'] = 14
-matplotlib.rcParams['xtick.labelsize'] = 12
-matplotlib.rcParams['ytick.labelsize'] = 12
-matplotlib.rcParams['text.color'] = 'k'
+#plt.rcParams['lines.linewidth'] = 2
+#matplotlib.rcParams['axes.labelsize'] = 14
+#matplotlib.rcParams['xtick.labelsize'] = 12
+#matplotlib.rcParams['ytick.labelsize'] = 12
+#matplotlib.rcParams['text.color'] = 'k'
 # Configuration de la page 
 
 pages_name = ['Presentation', 'Modelisation_ARIMA/Graphiques','Synthèse']
@@ -236,7 +236,7 @@ elif page == 'Modelisation_ARIMA/Graphiques':
     An example of standardized residual plots, Histogram, quantile plots, and correlogram is provided in this section.
     </div>""", unsafe_allow_html=True)
     
-    plt.rcParams['lines.linewidth'] = 2
+    #plt.rcParams['lines.linewidth'] = 2
     fig = results.plot_diagnostics(figsize=(16, 14))
     st.pyplot(fig)
 
@@ -255,7 +255,7 @@ elif page == 'Modelisation_ARIMA/Graphiques':
 
     ax.set_xlabel('Dates')
     ax.set_ylabel('Returns')
-    plt.rcParams['lines.linewidth'] = 2
+    #plt.rcParams['lines.linewidth'] = 2
     plt.legend()
     plt.title("Validating forecasts")
     st.pyplot(fig2)
@@ -280,7 +280,7 @@ elif page == 'Modelisation_ARIMA/Graphiques':
                     pred_ci.iloc[:, 1], color='k', alpha=.3)
     ax.set_xlabel('Dates')
     ax.set_ylabel('Returns')
-    plt.rcParams['lines.linewidth'] = 2
+    #plt.rcParams['lines.linewidth'] = 2
     plt.legend()
     st.pyplot(fig3)
 
@@ -398,8 +398,3 @@ else:
             st.pyplot(plt)
 
     st.image('https://github.com/aanisoara/Projet_Finance/raw/main/Image/thanks.gif',width=300, use_column_width ='false')
-
-
-
-    
-    
